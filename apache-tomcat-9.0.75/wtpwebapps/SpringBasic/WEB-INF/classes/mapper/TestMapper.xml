@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sql 작성은 mapper태그에서 작성, namespace 는 구현인터페이스의 풀 네임 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace에는 구현 인터페이스 풀 경로 -->
+<mapper namespace="com.simple.Basic.mapper.TestMapper">
+
+	<!-- id = 추상메서드 명 -->
+	<!-- select태그의 resultType에는 결과를 반환 받아서 나올 타임 or 객체 -->
+	<!-- 세미콜론은 적지 않는다 -->
+	<select id="getTime" resultType="string">
+		select now()
+	</select>
+
+	<!-- JDBCMybatis 단일값 Test -->
+	<!-- 파라미터타입 - int, double, string -->
+	<!-- 매개변수가 단일값 일때, 인터페이스 이름을 따라간다 -->
+	<!-- parameterType="string" 파라미터 타입은 생략 가능 -->
+	<insert id="insertOne" parameterType="string">
+		insert into score (name)
+		values(#{name})
+	</insert>
+
+	<!-- 다중값 1 -->
+	<!-- vo가 매개변수인경우 getter명을 따라간다 -->
+	<!-- parameterType="string" 파라미터 타입은 생략 가능 -> vo의 전체 경로를 가져오면 된다 -->
+	<insert id="insertTwo">
+		insert into score (name, kor, eng)
+		values (#{name}, #{kor}, #{eng})
+	</insert>
+
+	<!-- 다중값 2(Map) -->
+	<!-- 키 값을 따라간다 -->
+	<insert id="insertThree">
+		insert into score (name, kor, eng)
+		values (#{name}, #{kor}, #{eng})
+	</insert>
+
+	<insert id="insertFour">
+		insert into score (name, kor, eng)
+		values (#{name}, #{kor}, #{eng})
+	</insert>
+
+	<!-- update -->
+	<update id="updateOne">
+		update score set name = #{name}, kor = #{kor}, eng = #{eng}
+		where num = #{num}
+	</update>
+
+	<!-- select (resultType="com.simple.command.ScoreVO") -->
+	<!-- 엘리어스에 등록이 되어있다면 단축명을 사용할 수 있습니다. -->
+	<select id="selectOne" resultType="ScoreVO">
+		select * from score where num = #{num}
+	</select>
+
+
+
+	<!-- 마이바티스 기본 제공 타입 중 하나 map,string,int등.. -->
+	<select id="selectTwo" resultType="map">
+		select * from score where num = #{num}
+	</select>
+	<select id="selectThree" resultType="map">
+		select * from score order by num
+	</select>
+
+
+
+	<!-- n:1조인 -->
+	<select id="joinOne" resultType="ScoreVO">
+		select * from score s left join member m
+		on s.name=m.id
+	</select>
+
+
+	<!-- 1:n 조인 -->
+	<!-- memberVO엔 여러 행이 있기 때문에 타입으로 받으면 문제가 생김 -->
+	<select id="joinTwo" resultMap="xxx">
+		select * from member m left join score s
+		on m.id=s.name where id=#{name}
+	</select>
+	<!-- id엔 리절트맵값 타입에는 멤버vo를 넣는다. type=orm객체 id=명칭 -->
+	<resultMap type="com.simple.command.memberVO" id="xxx">
+		<result column="id" property="id"/>
+		<result column="addr" property="addr"/>
+		<collection property="list" resultMap="yyy"/>
+	</resultMap>
+	<resultMap type="com.simple.command.ScoreVO" id="yyy">
+		<result column="num" property="num"/>
+		<result column="name" property="name"/>
+		<result column="kor" property="kor"/>
+		<result column="eng" property="eng"/>
+	</resultMap>
+
+
+
+</mapper>

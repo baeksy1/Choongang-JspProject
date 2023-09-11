@@ -1,0 +1,14 @@
+127.0.0.1 - - [30/Jul/2023:22:38:28 +0900] "GET / HTTP/1.1" 200 11428
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:38:28 +0900] "GET /myweb/WEB-INF/views/user/login.jsp HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:38:28 +0900] "GET /favicon.ico HTTP/1.1" 200 21630
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:38:58 +0900] "GET /user/login HTTP/1.1" 404 821
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:39:46 +0900] "GET /user/join HTTP/1.1" 404 820
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:40:17 +0900] "GET /trip/notice_list HTTP/1.1" 404 827
+127.0.0.1 - - [30/Jul/2023:22:41:00 +0900] "GET / HTTP/1.1" 200 11428
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:41:00 +0900] "GET /myweb/WEB-INF/classes/com/baek/controller/TripController.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:41:12 +0900] "GET /myweb/user/login HTTP/1.1" 200 3405
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:41:12 +0900] "GET /myweb/resources/img/ico_face.png HTTP/1.1" 200 1459
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:41:12 +0900] "GET /myweb/resources/img/ico_kakao.png HTTP/1.1" 200 4282
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:41:12 +0900] "GET /myweb/resources/img/ico_naver.png HTTP/1.1" 200 3233
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:41:12 +0900] "GET /myweb/resources/img/ico_cellphone.png HTTP/1.1" 200 748
+0:0:0:0:0:0:0:1 - - [30/Jul/2023:22:41:12 +0900] "GET /myweb/resources/img/tit_login.png HTTP/1.1" 200 274185
